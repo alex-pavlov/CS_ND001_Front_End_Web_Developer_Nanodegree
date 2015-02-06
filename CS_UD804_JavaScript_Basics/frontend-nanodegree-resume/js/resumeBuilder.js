@@ -1,9 +1,3 @@
-//var formattedName = HTMLheaderName.replace("%data%", "Alex Pavlov");
-//var formattedRole = HTMLheaderRole.replace("%data%", "Web Developer");
-//$("#header").prepend(formattedName);
-//$("#header").prepend(formattedRole);
-
-
 var bio = {
 	"name": "Alexander Pavlov",
 	"role": "Web Developer", 
@@ -16,10 +10,11 @@ var bio = {
 },
 	"welcomeMessage": "Hello, world!", 
 	"skills": [
-		"C", "Linux", "Python", "HTML"
+		"C", "Linux", "HTML", "JavaScript", "Python"
 ],
 	"bioPic": "images/me.jpg"
 };
+
 
 var education = {
 	"schools": [
@@ -78,6 +73,7 @@ var education = {
 	]
 };
 
+
 var work = {
 	"jobs": [
 		{
@@ -104,16 +100,93 @@ var work = {
 					]
 };
 
+
 var projects = {
 	"projects": [
 		{
-			"title": "Project 1",
-			"dates": "1984-infinity",
-			"description": "blah blah blah",
+			"title": "Mockup to Website",
+			"dates": "Jan 12, 2015",
+			"description": "I replicated a design mockup from a PDF-file in HTML and CSS.<br>" +
+											"The finale design is responsive and adaptive.",
 			"images": ["images/project1.jpg"]
+			},
+			{
+			"title": "Interactive Resume",
+			"dates": "Jan 18, 2015",
+			"description": "I built my resume using JavaScript programming language.",
+			"images": ["images/project2.jpg"]
 			}
 	]
 };
+//$("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
+//$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
+
+function prependToHeader(what, how) {
+    $("#header").prepend( how.replace("%data%", what) );
+}
+
+function appendToResume(what, how, where) {
+    $(where).append( how.replace("%data%", what) );
+}
+
+function displayWork(){
+	for (job in work.jobs) {
+	$("#workExperience").append(HTMLworkStart);
+
+	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+	var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+	var formattedEmployerTitle = formattedEmployer + formattedTitle;
+	$(".work-entry:last").append(formattedEmployerTitle);
+
+	var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+	$(".work-entry:last").append(formattedDates);
+
+	var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+	$(".work-entry:last").append(formattedDescription);
+}
+};
+
+prependToHeader(bio.role, HTMLheaderRole);
+prependToHeader(bio.name, HTMLheaderName);
+
+appendToResume(bio.contacts.mobile, HTMLmobile, "#topContacts");
+appendToResume(bio.contacts.email, HTMLemail, "#topContacts");
+appendToResume(bio.contacts.github, HTMLgithub, "#topContacts");
+appendToResume(bio.contacts.twitter, HTMLtwitter, "#topContacts");
+appendToResume(bio.contacts.location, HTMLlocation, "#topContacts");
+appendToResume(bio.bioPic, HTMLbioPic, "#header");
+appendToResume(bio.welcomeMessage, HTMLWelcomeMsg, "#header");
+
+if (bio.skills.length > 0) {
+    $("#header").append(HTMLskillsStart);
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills.join(" "));
+    $("#skills").append(formattedSkill);
+}
+
+displayWork();
+
+$('#main').append(internationalizeButton);
+
+projects.display = function() {
+	for (project in projects.projects) {
+		$("#projects").append(HTMLprojectStart);
+		appendToResume(projects.projects[project].title, HTMLprojectTitle, ".project-entry:last");
+		appendToResume(projects.projects[project].dates, HTMLprojectDates, ".project-entry:last");
+		appendToResume(projects.projects[project].description, HTMLprojectDescription, ".project-entry:last");
+
+		if (projects.projects[project].images.length > 0) {
+			for (image in projects.projects[project].images) {
+				appendToResume(projects.projects[project].images[image], HTMLprojectImage, ".project-entry:last");
+			}
+
+		}
+
+	};
+};
+
+projects.display();
 
 // you want to see a map? here's a map.
 $("#mapDiv").append(googleMap);
+
+

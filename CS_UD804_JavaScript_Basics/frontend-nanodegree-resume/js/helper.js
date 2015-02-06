@@ -64,11 +64,24 @@ The International Name challenge in Lesson 2 where you'll create a function that
 */
 $(document).ready(function() {
   $('button').click(function() {
-    var iName = inName() || function(){};
-    $('#name').html(iName);  
+    var iName, name;
+
+    name = $('#name').html();
+    iName = inName(name) || function(){};
+
+    $('#name').html(iName);
   });
 })
 
+function inName(name) {
+  name = name.trim().split(" ");
+  console.log(name);
+  name[1] = name[1].toUpperCase();
+  name[0] = name[0].slice(0, 1).toUpperCase() +
+    name[0].slice(1).toLowerCase();
+
+  return name[0] + " " + name[1];
+}
 
 
 /*
@@ -86,9 +99,17 @@ function logClicks(x,y) {
   console.log("x location: " + x + "; y location: " + y);
 }
 
+
 $(document).click(function(loc) {
-  // your code goes here!
-});
+//  console.log("blah blah blah");
+  var x = loc.pageX;
+  var y = loc.pageY;
+
+  logClicks(x, y);
+
+})
+
+
 
 
 
@@ -152,7 +173,7 @@ function initializeMap() {
 
     // The next lines save location data from the search result object to local variables
     var lat = placeData.geometry.location.k;  // latitude from the place service
-    var lon = placeData.geometry.location.B;  // longitude from the place service
+    var lon = placeData.geometry.location.D;  // longitude from the place service
     var name = placeData.formatted_address;   // name of the place from the place service
     var bounds = window.mapBounds;            // current boundaries of the map window
 
