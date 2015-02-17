@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<script src="js/jQuery.js"></script>
+	</head>
+	<body>
+		Start
+		<div id = "main">A</div>
+		End
+		<br>
+		<button>My button!</button>
+		<p>P 1 </p>
+		<p>P 2 </p>
+
+<br>
+
+<ul>	
+  <li>list item 1</li>
+  <li>list item 2</li>
+  <li>list item 3</li>
+  <li>list item 4</li>
+  <li>list item 5</li>
+</ul>
+
+<div id="hui_id"><div>The first div.</div> <div>The second div.</div></div>
+
+	</body>
+	<script type="text/javascript">
+
+	var i = 0;
+
+	Just_an_Obj = {}
+
+  Just_an_Obj.first = '<br>First line<br>';
+  Just_an_Obj.second = '<br>Second line<br>';
+
+  Just_an_Obj.show = function() {
+		$('#main').append(Just_an_Obj.first);
+		};
+
+	Just_an_Array = ["<br>The First", "<br>The Second", "<br>The Third"];
+
+
+
+	$(document).ready(function() {
+  		$('button').click(function() {
+  			//$('#main').append('AAAAAAAAAA!');
+
+  			$('#main').append(Just_an_Array[i]);
+  			i++;
+
+  		});
+	});
+
+	$( "p" ).click(function() {
+    console.log( "You clicked a paragraph!" );
+});
+
+//$( "ul" ).find('li').css( "background-color", "red" );
+
+
+	</script>
+</html>
