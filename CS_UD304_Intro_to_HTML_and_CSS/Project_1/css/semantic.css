@@ -1,0 +1,56 @@
+.my-name {
+	font-family: 'Lato', sans-serif;
+	font-size: 250%;
+	color: #747704;
+}
+
+.spec {
+	font-family: 'Lato', sans-serif;
+	font-size: 150%;
+	color: #747704;
+}
+
+.custom-hr {
+	margin-top: 0%;
+	height: 4px;
+	width: 100%;
+	background-color: #BCBBBB;
+}
+
+.featured-work {
+	margin: 0%;
+	font-family: 'Lato', sans-serif;
+	font-size: 250%;
+	color: #BCBBBB;
+}
+
+h3 {
+	margin: 0%;
+	font-family: 'Lato', sans-serif;
+	font-size: 250%;
+	color: #747704;
+	text-align: center;
+}
+
+.footer1 p {
+	text-align: center;
+	color: #747704;
+	font-size: 100%;
+}
+
+.footer2 p {
+	text-align: center;
+	color: #747704;
+	font-size: 100%;
+}
+
+.footer3 p {
+	text-align: center;
+	color: #747704;
+	font-size: 100%;
+}
+
+a {
+	color: #747704;
+	font-size: 100%;
+}
